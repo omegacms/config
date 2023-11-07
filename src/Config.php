@@ -29,7 +29,7 @@ use Omega\Application\Application;
 /**
  * Config class.
  *
- * The `Config` class provides a simple and efficient way to access configuration 
+ * The `Config` class provides a simple and efficient way to access configuration
  * parameters stored in PHP files within the `config` directory of your application.
  *
  * @category    Omega
@@ -42,23 +42,23 @@ use Omega\Application\Application;
  */
 class Config
 {
-    /** 
-     * Loaded params. 
-     * 
-     * @var array $loaded Holds an array of loaded parameter. 
+    /**
+     * Loaded params.
+     *
+     * @var array $loaded Holds an array of loaded parameter.
      */
     private array $loaded = [];
 
-    /** 
-     * Get the config parameter. 
-     * 
-     * Retrieve a configuration parameter by specifying its key. The method will 
-     * look for the parameter in the corresponding configuration file within the 
-     * `config` directory of your application. 
-     * 
-     * @param  string $key     Holds the config key, which may include dots for nested values. 
-     * @param  mixed  $default Holds the default value to return if the key is not found. 
-     * @return mixed Return the value of the configuration parameter, or the default value if not found. 
+    /**
+     * Get the config parameter.
+     *
+     * Retrieve a configuration parameter by specifying its key. The method will
+     * look for the parameter in the corresponding configuration file within the
+     * `config` directory of your application.
+     *
+     * @param  string $key     Holds the config key, which may include dots for nested values.
+     * @param  mixed  $default Holds the default value to return if the key is not found.
+     * @return mixed Return the value of the configuration parameter, or the default value if not found.
      */
     public function get(string $key, mixed $default = null): mixed
     {
@@ -80,14 +80,14 @@ class Config
         return $default;
     }
 
-    /** 
-     * Retrieve config key with dots notations. 
-     * 
-     * Helper method to access nested configuration values using dot notation. 
-     * 
-     * @param  array $array    Holds an array of key. 
-     * @param  array $segments Holds an array of arguments. 
-     * @return mixed 
+    /**
+     * Retrieve config key with dots notations.
+     *
+     * Helper method to access nested configuration values using dot notation.
+     *
+     * @param  array $array    Holds an array of key.
+     * @param  array $segments Holds an array of arguments.
+     * @return mixed
      */
     private function withDots( array $array, array $segments ) : mixed
     {
@@ -104,13 +104,13 @@ class Config
         return $current;
     }
 
-    /** 
-     * Load the configuration file. 
-     * 
-     * Load a configuration file from the `config` directory of your application. 
-     * 
-     * @param  string $configFile Holds the configuration file name. 
-     * @return array Return an array containing the configuration parameters. 
+    /**
+     * Load the configuration file.
+     *
+     * Load a configuration file from the `config` directory of your application.
+     *
+     * @param  string $configFile Holds the configuration file name.
+     * @return array Return an array containing the configuration parameters.
      */
     private function loadConfigFile( string $configFile ) : array
     {

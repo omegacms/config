@@ -27,8 +27,8 @@ use Omega\Config\Config;
 /**
  * Config service provider class.
  *
- * The `ConfigServiceProvider` class provides a service binding for the `Config` class 
- * within the Omega framework. It allows you to easily access configuration parameters 
+ * The `ConfigServiceProvider` class provides a service binding for the `Config` class
+ * within the Omega framework. It allows you to easily access configuration parameters
  * throughout your application.
  *
  * @category    Omega
@@ -42,14 +42,14 @@ use Omega\Config\Config;
  */
 class ConfigServiceProvider
 {
-    /** 
-     * Bind the configuration. 
-     * 
-     * Binds an instance of the `Config` class to the application container, allowing you 
-     * to resolve it using the `config` key. 
-     * 
-     * @param  Application $application Holds an instance of Application. 
-     * @return void 
+    /**
+     * Bind the configuration.
+     *
+     * Binds an instance of the `Config` class to the application container, allowing you
+     * to resolve it using the `config` key.
+     *
+     * @param  Application $application Holds an instance of Application.
+     * @return void
      */
     public function bind( Application $application ) : void
     {
