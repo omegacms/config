@@ -18,9 +18,8 @@
     "omegacms/application": "^1.0.0"
   },
   "require-dev": {
+    "omegacms/testing": "^1.0.0",
     "phpunit/phpunit": "^9.5",
-    "symfony/panther": "^0.9.0",
-    "dbrekelmans/bdi": "^0.3.0",
     "symfony/process": "^5.2"
   },
   "autoload": {
