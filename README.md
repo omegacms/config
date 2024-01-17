@@ -28,7 +28,7 @@ composer require omegacms/config
 
 ## Contributing
 
-If you'd like to contribute to the OmegaCMS Cnfig package, please follow our [contribution guidelines](CONTRIBUTING.md).
+If you'd like to contribute to the OmegaCMS Config package, please follow our [contribution guidelines](CONTRIBUTING.md).
 
 ## License
 
