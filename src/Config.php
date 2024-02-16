@@ -21,10 +21,10 @@ namespace Omega\Config;
 /**
  * @use
  */
+use function Omega\Helpers\app;
 use function array_shift;
 use function explode;
 use function file_exists;
-use Omega\Application\Application;
 
 /**
  * Config class.
@@ -66,7 +66,7 @@ class Config
         $file     = array_shift( $segments );
 
         if (  ! isset( $this->loaded[ $file ] ) ) {
-            $base      = Application::getInstance()->resolve( 'paths.base' );
+            $base      = app()->resolve( 'paths.base' );
             $separator = DIRECTORY_SEPARATOR;
 
             $configFile            = "{$base}{$separator}config{$separator}{$file}.php";
