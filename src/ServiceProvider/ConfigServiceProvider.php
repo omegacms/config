@@ -53,7 +53,7 @@ class ConfigServiceProvider
      */
     public function bind( Application $application ) : void
     {
-        $application->bind( 'config', function () {
+        $application->alias( 'config', function () {
             return new Config();
         });
     }
