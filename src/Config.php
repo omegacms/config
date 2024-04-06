@@ -21,7 +21,7 @@ namespace Omega\Config;
 /**
  * @use
  */
-use function Omega\Helpers\app;
+use function Omega\Helpers\get_config_path;
 use function array_shift;
 use function explode;
 use function file_exists;
@@ -66,11 +66,7 @@ class Config
         $file     = array_shift( $segments );
 
         if (  ! isset( $this->loaded[ $file ] ) ) {
-            $base      = app()->resolve( 'paths.base' );
-            $separator = DIRECTORY_SEPARATOR;
-
-            $configFile            = "{$base}{$separator}config{$separator}{$file}.php";
-            $this->loaded[ $file ] = $this->loadConfigFile( $configFile );
+            $this->loaded[ $file ] = $this->loadConfigFile( get_config_path( $file . '.php' ) );
         }
 
         if ( $value = $this->withDots( $this->loaded[ $file ], $segments ) ) {
