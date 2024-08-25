@@ -21,7 +21,6 @@ namespace Omega\Config;
 /**
  * @use
  */
-use function Omega\Helpers\get_config_path;
 use function array_shift;
 use function explode;
 use function file_exists;
