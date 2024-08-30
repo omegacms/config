@@ -44,9 +44,10 @@ class Config
     /**
      * Loaded params.
      *
-     * @var array $loaded Holds an array of loaded parameter.
+     * @var array<string, array<string, mixed>> $loaded Holds an array of loaded parameter.
      */
     private array $loaded = [];
+
 
     /**
      * Get the config parameter.
@@ -59,7 +60,7 @@ class Config
      * @param  mixed  $default Holds the default value to return if the key is not found.
      * @return mixed Return the value of the configuration parameter, or the default value if not found.
      */
-    public function get(string $key, mixed $default = null): mixed
+    public function get( string $key, mixed $default = null ) : mixed
     {
         $segments = explode( '.', $key );
         $file     = array_shift( $segments );
@@ -80,16 +81,17 @@ class Config
      *
      * Helper method to access nested configuration values using dot notation.
      *
-     * @param  array $array    Holds an array of key.
-     * @param  array $segments Holds an array of arguments.
+     * @param  array<string, mixed> $array    Holds an array of key.
+     * @param  array<int, string> $segments Holds an array of arguments.
      * @return mixed
      */
-    private function withDots( array $array, array $segments ) : mixed
+    public function withDots( array $array, array $segments ) : mixed
     {
+        /** @var array<string, mixed> $current */
         $current = $array;
 
         foreach ( $segments as $segment ) {
-            if ( ! isset( $current[ $segment ] ) ) {
+            if ( ! is_array( $current ) || ! array_key_exists( $segment, $current ) ) {
                 return null;
             }
 
@@ -105,9 +107,9 @@ class Config
      * Load a configuration file from the `config` directory of your application.
      *
      * @param  string $configFile Holds the configuration file name.
-     * @return array Return an array containing the configuration parameters.
+     * @return array<string, mixed> Return an array containing the configuration parameters.
      */
-    private function loadConfigFile( string $configFile ) : array
+    public function loadConfigFile( string $configFile ) : array
     {
         if ( file_exists( $configFile ) ) {
             return (array)require $configFile;
