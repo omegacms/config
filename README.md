@@ -1,3 +1,4 @@
+![PHPStan Level](https://img.shields.io/badge/PHPStan-level_9-brightgreen)
 # Config Package
 
 The Config package provides a simple and efficient way to access configuration parameters stored in PHP files within the config directory of your application.
