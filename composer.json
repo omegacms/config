@@ -17,19 +17,9 @@
     "php": ">=8.2",
     "omegacms/application": "^1.0.0"
   },
-  "require-dev": {
-    "omegacms/testing": "^1.0.0",
-    "phpunit/phpunit": "^10.3",
-    "phpstan/phpstan": "^1.12"
-  },
   "autoload": {
     "psr-4": {
       "Omega\\Config\\": "src/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Omega\\Config\\Tests\\": "tests/"
     }
   },
   "scripts": {
