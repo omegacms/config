@@ -23,6 +23,7 @@ namespace Omega\Config\ServiceProvider;
  */
 use Omega\Application\Application;
 use Omega\Config\Config;
+use Omega\Container\ServiceProvider\ServiceProviderInterface;
 
 /**
  * Config service provider class.
@@ -32,15 +33,15 @@ use Omega\Config\Config;
  * throughout your application.
  *
  * @category    Omega
- * @package     Omega\Config
- * @subpackage  Omega\Config\ServiceProvider
+ * @package     Config
+ * @subpackage  ServiceProvider
  * @link        https://omegacms.github.io
  * @author      Adriano Giovannini <omegacms@outlook.com>
  * @copyright   Copyright (c) 2024 Adriano Giovannini. (https://omegacms.github.io)
  * @license     https://www.gnu.org/licenses/gpl-3.0-standalone.html     GPL V3.0+
  * @version     1.0.0
  */
-class ConfigServiceProvider
+class ConfigServiceProvider implements ServiceProviderInterface
 {
     /**
      * Bind the configuration.
