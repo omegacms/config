@@ -1,24 +1,27 @@
 <?php
+
 /**
- * Part of Omega CMS - Config Package
+ * Part of Omega CMS - Config Package.
  *
- * @link       https://omegacms.github.io
+ * @see       https://omegacms.github.io
+ *
  * @author     Adriano Giovannini <omegacms@outlook.com>
  * @copyright  Copyright (c) 2024 Adriano Giovannini. (https://omegacms.github.io)
  * @license    https://www.gnu.org/licenses/gpl-3.0-standalone.html     GPL V3.0+
  */
 
-/**
+/*
  * @declare
  */
-declare( strict_types = 1 );
+declare(strict_types=1);
 
 /**
  * @namespace
  */
+
 namespace Omega\Config;
 
-/**
+/*
  * @use
  */
 use function array_shift;
@@ -33,10 +36,13 @@ use function file_exists;
  *
  * @category    Omega
  * @package     Config
- * @link        https://omegacms.github.io
+ *
+ * @see        https://omegacms.github.io
+ *
  * @author      Adriano Giovannini <omegacms@outlook.com>
  * @copyright   Copyright (c) 2024 Adriano Giovannini. (https://omegacms.github.io)
  * @license     https://www.gnu.org/licenses/gpl-3.0-standalone.html     GPL V3.0+
+ *
  * @version     1.0.0
  */
 class Config
@@ -44,10 +50,9 @@ class Config
     /**
      * Loaded params.
      *
-     * @var array<string, array<string, mixed>> $loaded Holds an array of loaded parameter.
+     * @var array<string, array<string, mixed>> Holds an array of loaded parameter.
      */
     private array $loaded = [];
-
 
     /**
      * Get the config parameter.
@@ -56,20 +61,21 @@ class Config
      * look for the parameter in the corresponding configuration file within the
      * `config` directory of your application.
      *
-     * @param  string $key     Holds the config key, which may include dots for nested values.
-     * @param  mixed  $default Holds the default value to return if the key is not found.
+     * @param string $key     Holds the config key, which may include dots for nested values.
+     * @param mixed  $default Holds the default value to return if the key is not found.
+     *
      * @return mixed Return the value of the configuration parameter, or the default value if not found.
      */
-    public function get( string $key, mixed $default = null ) : mixed
+    public function get(string $key, mixed $default = null): mixed
     {
-        $segments = explode( '.', $key );
-        $file     = array_shift( $segments );
+        $segments = explode('.', $key);
+        $file     = array_shift($segments);
 
-        if (  ! isset( $this->loaded[ $file ] ) ) {
-            $this->loaded[ $file ] = $this->loadConfigFile( get_config_path( $file . '.php' ) );
+        if (!isset($this->loaded[$file])) {
+            $this->loaded[$file] = $this->loadConfigFile(get_config_path($file . '.php'));
         }
 
-        if ( $value = $this->withDots( $this->loaded[ $file ], $segments ) ) {
+        if ($value = $this->withDots($this->loaded[$file], $segments)) {
             return $value;
         }
 
@@ -81,21 +87,22 @@ class Config
      *
      * Helper method to access nested configuration values using dot notation.
      *
-     * @param  array<string, mixed> $array    Holds an array of key.
-     * @param  array<int, string> $segments Holds an array of arguments.
+     * @param array<string, mixed> $array    Holds an array of key.
+     * @param array<int, string>   $segments Holds an array of arguments.
+     *
      * @return mixed
      */
-    public function withDots( array $array, array $segments ) : mixed
+    private function withDots(array $array, array $segments): mixed
     {
-        /** @var array<string, mixed> $current */
+        /** @var array<string, mixed> */
         $current = $array;
 
-        foreach ( $segments as $segment ) {
-            if ( ! is_array( $current ) || ! array_key_exists( $segment, $current ) ) {
+        foreach ($segments as $segment) {
+            if (!is_array($current) || !array_key_exists($segment, $current)) {
                 return null;
             }
 
-            $current = $current[ $segment ];
+            $current = $current[$segment];
         }
 
         return $current;
@@ -106,12 +113,13 @@ class Config
      *
      * Load a configuration file from the `config` directory of your application.
      *
-     * @param  string $configFile Holds the configuration file name.
+     * @param string $configFile Holds the configuration file name.
+     *
      * @return array<string, mixed> Return an array containing the configuration parameters.
      */
-    public function loadConfigFile( string $configFile ) : array
+    private function loadConfigFile(string $configFile): array
     {
-        if ( file_exists( $configFile ) ) {
+        if (file_exists($configFile)) {
             return (array)require $configFile;
         }
 

@@ -1,24 +1,27 @@
 <?php
+
 /**
- * Part of Omega CMS - Config Package
+ * Part of Omega CMS - Config Package.
  *
- * @link       https://omegacms.github.io
+ * @see       https://omegacms.github.io
+ *
  * @author     Adriano Giovannini <omegacms@outlook.com>
  * @copyright  Copyright (c) 2024 Adriano Giovannini. (https://omegacms.github.io)
  * @license    https://www.gnu.org/licenses/gpl-3.0-standalone.html     GPL V3.0+
  */
 
-/**
+/*
  * @declare
  */
-declare( strict_types = 1 );
+declare(strict_types=1);
 
 /**
  * @namespace
  */
+
 namespace Omega\Config\ServiceProvider;
 
-/**
+/*
  * @use
  */
 use Omega\Application\Application;
@@ -35,10 +38,13 @@ use Omega\Container\ServiceProvider\ServiceProviderInterface;
  * @category    Omega
  * @package     Config
  * @subpackage  ServiceProvider
- * @link        https://omegacms.github.io
+ *
+ * @see        https://omegacms.github.io
+ *
  * @author      Adriano Giovannini <omegacms@outlook.com>
  * @copyright   Copyright (c) 2024 Adriano Giovannini. (https://omegacms.github.io)
  * @license     https://www.gnu.org/licenses/gpl-3.0-standalone.html     GPL V3.0+
+ *
  * @version     1.0.0
  */
 class ConfigServiceProvider implements ServiceProviderInterface
@@ -49,12 +55,13 @@ class ConfigServiceProvider implements ServiceProviderInterface
      * Binds an instance of the `Config` class to the application container, allowing you
      * to resolve it using the `config` key.
      *
-     * @param  Application $application Holds an instance of Application.
+     * @param Application $application Holds an instance of Application.
+     *
      * @return void
      */
-    public function bind( Application $application ) : void
+    public function bind(Application $application): void
     {
-        $application->alias( 'config', function () {
+        $application->alias('config', function () {
             return new Config();
         });
     }
